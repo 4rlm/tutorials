@@ -1,0 +1,129 @@
+Description	Command	Example
+$ ls -l                 list contents	ls	
+$ mkdir environment     make directory	mkdir <dirname>	
+$ cd environment/       change directory	cd <dirname>
+$ cd ..                 cd one directory up
+$ cd ~ or just $ cd     cd to home directory	
+$ cd ~/environment/     cd to path incl. home dir
+$ mv foo bar            move file (rename)	mv <source> <target>
+$ cp foo bar            copy file	cp <source> <target>
+$ rm foo                remove file	rm <file>
+$ rmdir environment/    remove empty directory	rmdir <directory>
+$ rm -rf tmp/           remove nonempty directory	rm -rf <directory>
+$ cat ~/.ssh/id_rsa.pub concatenate & display file contents	cat <file>
+
+===============================================================
+
+Setup Ruby version
+$ rvm get stable
+$ rvm install 3.1.2
+$ rvm --default use 3.1.2
+$ ruby -v  ## ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-linux]
+
+---------------------------------------
+Listing 1.1: Configuring the .gemrc file to skip the installation of Ruby documentation.
+$ echo "gem: --no-document" >> ~/.gemrc
+
+---------------------------------------
+Listing 1.2: Installing Rails with a specific version number.
+$ gem install rails -v 7.0.3
+$ rails -v ## Rails 7.0.3
+
+---------------------------------------
+Listing 1.3: Installing Bundler with a specific version number.
+$ gem install bundler -v 2.3.14
+
+---------------------------------------
+Listing 1.5: Making an environment directory for Rails projects.
+$ cd                    # Change to the home directory.
+$ mkdir environment     # Make an environment directory.
+$ cd environment/       # Change into the environment directory.
+
+---------------------------------------
+Listing 1.6: Running rails new (with a specific version number).
+$ cd ~/environment
+$ rails _7.0.3_ new hello_app --skip-bundle
+
+---------------------------------------
+Listing 1.8: A Gemfile with an explicit version for each Ruby gem.
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby "3.1.2"
+
+gem "rails",           "7.0.3"
+gem "sassc-rails",     "2.1.2"
+gem "sprockets-rails", "3.4.2"
+gem "importmap-rails", "1.1.0"
+gem "turbo-rails",     "1.1.1"
+gem "stimulus-rails",  "1.0.4"
+gem "jbuilder",        "2.11.5"
+gem "puma",            "5.6.4"
+gem "bootsnap",        "1.12.0", require: false
+
+group :development, :test do
+  gem "sqlite3", "1.4.2"
+  gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
+end
+
+group :development do
+  gem "web-console", "4.2.0"
+end
+
+group :test do
+  gem "capybara",           "3.37.1"
+  gem "selenium-webdriver", "4.2.0"
+  gem "webdrivers",         "5.0.0"
+end
+
+---------------------------------------
+Listing 1.9: Installing the gems from Listing 1.8.
+$ cd hello_app/
+$ bundle _2.3.14_ install
+
+---------------------------------------
+In future, could use:
+$ rails new hello_world
+$ bundle install  ## Or just $ bundle
+** If version issues, just run ...
+$ bundle update
+** Or ...
+$ rm -f Gemfile.lock
+$ bundle
+
+---------------------------------------
+Listing 1.10: Allowing connections to the local web server.
+config/environments/development.rb
+Rails.application.configure do
+  .
+  .
+  .
+  # Allow connections to local server on cloud IDE.
+  config.hosts.clear
+end
+
+---------------------------------------
+Listing 1.11: Running the Rails server.
+$ cd ~/environment/hello_app/
+$ rails server
+## View: http://localhost:3000
+
+---------------------------------------
+Listing 1.12: Adding a hello action to the Application controller.
+$ ls app/controllers/*_controller.rb  ## Confirm we just have one controller.
+
+## Insert code below to change default welcome message.
+app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+
+  def hello
+    render html: "hello, world!"
+  end
+end
+
+---------------------------------------
+Listing 1.14: Setting the root route.
+config/routes.rb
+Rails.application.routes.draw do
+  root "application#hello"
+end

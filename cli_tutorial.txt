@@ -1,0 +1,50 @@
+Switch to Zshell: https://news.learnenough.com/macos-bash-zshell
+
+prompt $ command option argument
+$ echo hello
+$ grep foobar
+$ man echo
+$ q ## to exit man command
+
+Key	Symbol
+⌘       Command
+⌥       Option
+⌃       Control
+⇧       Shift
+↑ ↓ ← → Up, down, left, right
+↵       Enter/Return
+⇥       Tab
+⌫       Delete
+>>      Append Operator
+
+⌃A      Start of line.
+⌃E      End of line.
+⌃U      Clears the line.
+⌃L      $ clear
+⌃D      $ exit
+⌥-Click Move cursor anywhere.
+*       wildcard character
+.       Hidden files.
+
+diff    Compare different files.
+$ ls    List
+$ ls *.txt  List all files ending in .txt
+$ ls -l Long form
+$ ls -rtl   Long form, reversed time of modification
+$ ls -a     Include hidden files.
+$ touch Create file.
+foo/bar/baz Metasyntactic variables
+
+$ echo "From fairest creatures we desire increase,"
+$ echo "From fairest creatures we desire increase," > sonnet_1.txt
+$ cat sonnet_1.txt
+$ echo "That thereby beauty's Rose might never die," >> sonnet_1.txt
+$ cat sonnet_1.txt
+$ echo "From fairest creatures we desire increase," > sonnet_1_lower_case.txt
+$ echo "That thereby beauty's rose might never die," >> sonnet_1_lower_case.txt
+$ diff sonnet_1.txt sonnet_1_lower_case.txt
+$ ls foo.txt
+$ ls *.txt
+$ ls -l *.txt (long form)
+$ echo "*.txt" > .gitignore
+$ cat .gitignore
