@@ -1,4 +1,6 @@
 Switch to Zshell: https://news.learnenough.com/macos-bash-zshell
+$ chsh -s /bin/bash ## Switch to bash.
+$ echo $SHELL       ## Confirm switched to bash.
 
 prompt $ command option argument
 $ echo hello
@@ -48,3 +50,92 @@ $ ls *.txt
 $ ls -l *.txt (long form)
 $ echo "*.txt" > .gitignore
 $ cat .gitignore
+$ ls b*   Find all files starting with "b"
+$ which curl
+$ curl -OL https://cdn.learnenough.com/sonnets.txt
+$ ls -rtl
+$ !!  Runs previous command.!
+$ !curl   Runs previous curl.
+$ !<command> Runs previous command.
+!c
+⌃R  search interactively through your previous commands
+$ head sonnets.txt  ##  First ten lines.
+$ tail sonnets.text ##  Last ten lines.
+$ wc sonnets.txt    ## Word count of file.
+$ head sonnets.txt > sonnets_head.txt (redirect > )
+$ wc sonnets_head.txt
+
+Rename a File:
+$ echo "test text" > test
+$ mv test test_file.txt
+$ ls
+
+Copy a File:
+$ cp test_file.txt second_test.txt
+$ ls
+
+Delete a File:
+$ rm second_test.txt
+$ ls second_test.txt
+
+
+Command	        Description	                      Example
+>	              Redirect output to filename	      $ echo foo > foo.txt
+>>	            Append output to filename	        $ echo bar >> foo.txt
+cat <file>	    Print contents of file to screen	$ cat hello.txt
+diff <f1> <f2>	Diff files 1 & 2	                $ diff foo.txt bar.txt
+ls	            List directory or file	          $ ls hello.txt
+ls -l	          List long form	                  $ ls -l hello.txt
+ls -rtl	        Long by reverse modification time	$ ls -rtl
+ls -a	          List all (including hidden)	      $ ls -a
+touch <file>	  Create an empty file	            $ touch foo
+mv <old> <new>	Rename (move) from old to new	    $ mv foo bar
+cp <old> <new>	Copy old to new	                  $ cp foo bar
+rm <file>	      Remove (delete) file	            $ rm foo
+rm -f <file>	  Force-remove file	                $ rm -f bar
+
+
+$ head sonnets.txt | wc  ## WC head (with pipes |)
+$ less sonnets.txt  ## Navigate interactively (Ctrl-F/B/q)
+Command	              Description	                  Example
+up & down arrow keys	Move up or down one line	
+spacebar	            Move forward one page	
+⌃F	                  Move forward one page	
+⌃B	                  Move back one page	
+G	                    Move to end of file	
+1G	                  Move to beginning of file	
+/<string>	            Search file for string	      /rose
+n	                    Move to next search result
+N	                    Move to previous search result
+q	                    Quit less
+
+$ grep rose sonnets.txt   ##  search for a substring in a file.
+$ man grep.   ##  Man pages
+
+$top    ## See all processor activity.
+$ ps    ## process status
+$ ps aux  ## see what processes are running on server
+$ ps aux | grep spring
+$ kill -15 12241
+$ pkill -15 -f spring
+
+
+
+Command	                Description	                    Example
+curl	                  Interact with URLs	            $ curl -O https://ex.co
+which	                  Locate a program on the path	  $ which curl
+head <file>	            Display first part of file	    $ head foo
+tail <file>	            Display last part of file	      $ tail bar
+wc <file>	              Count lines, words, bytes	      $ wc foo
+cmd1 | cmd2	            Pipe cmd1 to cmd2	              $ head foo | wc
+ping <url>	            Ping a server URL	              $ ping google.com
+less <file>	            View file contents interactively$ less foo
+grep <string> <file>	  Find string in file	            $ grep foo bar.txt
+grep -i <string> <file>	Find case-insensitively	        $ grep -i foo bar.txt
+ps	                    Show processes	                $ ps aux
+top	                    Show processes (sorted)	        $ top
+kill -<level> <pid>	    Kill a process	                $ kill -15 24601
+pkill -<level> -f <name>Kill matching processes	        $ pkill -15 -f spring
+
+
+https://www.learnenough.com/command-line-tutorial/directories
